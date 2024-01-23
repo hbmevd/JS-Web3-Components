@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThirdwebProvider
       activeChain="ethereum"
-      clientId={process.env.NEXT_PUBLIC_TEMPLATE_CLIENT_ID}
+      clientId="9b406d6af880a571a409bc229085bdc5"
     >
       <Component {...pageProps} />
     </ThirdwebProvider>
