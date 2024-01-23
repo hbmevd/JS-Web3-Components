@@ -4,7 +4,6 @@ import { ThirdwebProvider } from '@thirdweb-dev/react';
 import '../styles/globals.css';
 import React from 'react';
 import WhitelistConnector from './whitelistConnector';
-import '../styles/gbstyles.module.css';
 
 function MyApp({ Component, pageProps }) {
   return (

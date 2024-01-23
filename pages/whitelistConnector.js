@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ThirdwebProvider, ConnectWallet, useAddress, useDisconnect } from '@thirdweb-dev/react';
 import WhitelistChecker from './whitelistChecker';
-import styles from '../styles/home.module.css';
+import styles from '../styles/Home.module.css';
 
 const WhitelistConnector = () => {
   const [isConnected, setIsConnected] = useState(false);
