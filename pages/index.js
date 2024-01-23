@@ -4,5 +4,11 @@ import Image from "next/image";
 import WhitelistChecker from "./whitelistChecker"; // Update the path based on your project structure
 
 export default function Home() {
-  return <WhitelistChecker/>
+  return (
+  <div>
+    <ConnectWallet/>
+    <WhitelistChecker/>
+  </div>
+  
+    )
 }
