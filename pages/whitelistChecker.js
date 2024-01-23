@@ -70,7 +70,7 @@ const WhitelistChecker = () => {
               </div>
             ) : (
               <div>
-                <p>This isn't your time.</p>
+                <p>This isn&apos;t your time.</p>
                 <p>Find out how to join us in Discord...</p>
                 <button onClick={handleJoinDiscord}>Join Discord to whitelist</button>
               </div>
