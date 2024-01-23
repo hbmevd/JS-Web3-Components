@@ -1,15 +1,15 @@
 // WhitelistChecker.js
 
 import React, { useEffect, useState } from 'react';
-import { useAddress } from '@thirdweb-dev/react';
+import { useAddress, useDisconnect } from '@thirdweb-dev/react';
 import { collection, getDocs, where, query } from '@firebase/firestore';
 import { firestore } from '../firebaseConfig'; // Ensure this import is correct
 
 const WhitelistChecker = () => {
   const [whitelistStatus, setWhitelistStatus] = useState(null);
   const [eligibleMints, setEligibleMints] = useState(0);
-  const [previewData, setPreviewData] = useState('');
   const connectedAddress = useAddress();
+  const { disconnect } = useDisconnect();
 
   const fetchData = async () => {
     try {
@@ -37,62 +37,46 @@ const WhitelistChecker = () => {
     fetchData();
   }, [connectedAddress]);
 
-  const handleCheckWhitelist = () => {
+  useEffect(() => {
     fetchData();
+  }, [disconnect]); // Run the check when disconnecting the wallet
 
-    if (whitelistStatus && eligibleMints > 0) {
-      const successMessage = `Congratulations! You are whitelisted. Available mints: ${eligibleMints}`;
-      console.log(successMessage); // Log success message to console
-      window.parent.postMessage(successMessage, '*');
-    } else {
-      const errorMessage = 'Sorry, you are not whitelisted.';
-      console.log(errorMessage); // Log error message to console
-      window.parent.postMessage(errorMessage, '*');
-    }
+  const sendToWebflowUI = (id, message) => {
+    window.parent.postMessage({ id, message }, '*');
   };
 
-  const handleGetPreviewData = async () => {
-    try {
-      const whitelistCollection = collection(firestore, 'whitelist');
-
-      const snapshot = await getDocs(whitelistCollection);
-      const data = snapshot.docs.map(doc => doc.data());
-
-      setPreviewData(JSON.stringify(data.slice(0, 10), null, 2));
-    } catch (error) {
-      console.error('Error fetching preview data from Firestore:', error);
-      setPreviewData('');
-    }
+  const handleJoinDiscord = () => {
+    // Replace this link with your Discord server invite link
+    window.open('https://discord.gg/HrGZ2cmHK8', '_blank');
   };
+
+  useEffect(() => {
+    // Send messages to Webflow UI when data changes
+    sendToWebflowUI('welcomeMessage', 'Welcome to the Jungle, Bully');
+    sendToWebflowUI('eligibleMessage', 'You are eligible for');
+    sendToWebflowUI('eligibleMints', eligibleMints.toString());
+    sendToWebflowUI('mintsMessage', 'mints');
+  }, [whitelistStatus, eligibleMints]);
 
   return (
     <div>
       <div>
-        {whitelistStatus !== null && (
+        {connectedAddress && whitelistStatus !== null && (
           <div>
             {whitelistStatus ? (
               <div>
-                <p>Congrats, you are whitelisted!</p>
-                <p>Available mints: {eligibleMints}</p>
+                <p>Welcome to the Jungle, Bully.</p>
+                <p> You are eligible for <b>{eligibleMints}</b> mints</p>
               </div>
             ) : (
-              <p>Sorry, you are not whitelisted.</p>
+              <div>
+                <b><p>This isn't your time.</p></b>
+                <p>Find out how to join us in Discord...</p>
+                <button onClick={handleJoinDiscord}>Join Discord to whitelist</button>
+              </div>
             )}
           </div>
         )}
-      </div>
-
-      <button onClick={handleCheckWhitelist}>Check Whitelist</button>
-
-      <div>
-        <button onClick={handleGetPreviewData}>Get Data Preview</button>
-        <textarea
-          rows="10"
-          cols="50"
-          placeholder="Preview Data will be shown here"
-          value={previewData}
-          readOnly
-        />
       </div>
     </div>
   );

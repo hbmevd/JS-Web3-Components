@@ -14,15 +14,6 @@ const WhitelistConnector = () => {
     setIsConnected(true);
   };
 
-  const handleDisconnectWallet = () => {
-    // Disconnect the wallet and update the state
-    // Note: The disconnect logic depends on your specific use case or the Thirdweb API
-    // You may need to use a different method provided by Thirdweb for disconnecting
-    // This is a placeholder, and you should replace it with the actual disconnect logic
-    disconnect();
-    setIsConnected(false);
-  };
-
   // Check for an existing connection on page load
   useEffect(() => {
     // Use the connectedAddress to check if the wallet is already connected
