@@ -6,8 +6,6 @@ import WhitelistChecker from "./whitelistChecker"; // Update the path based on y
 export default function Home() {
   return (
   <div>
-    <ConnectWallet/>
-    <WhitelistChecker/>
   </div>
   
     )

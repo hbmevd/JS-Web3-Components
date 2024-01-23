@@ -31,11 +31,8 @@ const WhitelistConnector = () => {
         </div>
       <div>
         {/* Display the ConnectWallet component only if not connected */}
-        {!isConnected && (
-          <ConnectWallet
-            onConnect={handleConnectWallet}
-          />
-        )}
+          
+      
 
         {/* Display the WhitelistChecker component when connected */}
         {isConnected && <WhitelistChecker />}
