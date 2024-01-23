@@ -4,7 +4,7 @@ import { ThirdwebProvider } from '@thirdweb-dev/react';
 import '../styles/globals.css';
 import React from 'react';
 import WhitelistConnector from './whitelistConnector';
-import ConnectWalletButton from './connectWalletButton';
+import '../styles/gbstyles.module.css';
 
 function MyApp({ Component, pageProps }) {
   return (

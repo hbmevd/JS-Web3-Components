@@ -1,8 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'Gridular';
+  src: url('../fonts/Gridular-Regular.woff2') format('woff2'), url('../fonts/Gridular-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.whitelist-container {
+  padding: 50px;
+  background-color: rgba(230, 230, 230, 0.05); /* Background color with 15% opacity */
+  margin: 0px;
+  font-family: 'Exo', sans-serif;
+  color: #e6e6e6;
+  backdrop-filter: blur(15px); /* Add a 15px blur to the background */
+  text-align: center; /* Center text content horizontally */
+}
+
+.welcome-message {
+  font-size: 18px;
+  font-family: 'Exo', sans-serif;
+  color: rgb(120, 120, 120);
+}
+
+.mints-count {
+  font-size: 50px;
+  font-family: 'Gridular', sans-serif;
+  color: rgb(255, 255, 255);
+  margin: -35px;
+}
+
+.error-message {
+  font-size: 18px;
+  font-family: 'Exo', sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.discord-button {
+  background-color: #6a6a6b;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-family: 'Exo', sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .container {
   width: 100%;
   max-width: 1440px;
   padding: 0 1rem;
   margin: 0 auto;
+  text-decoration-color: #bfa3da;
 }
 
 .gradientText0 {

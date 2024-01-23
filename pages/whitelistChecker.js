@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useAddress, useDisconnect } from '@thirdweb-dev/react';
 import { collection, getDocs, where, query } from '@firebase/firestore';
 import { firestore } from '../firebaseConfig'; // Ensure this import is correct
+import styles from '../styles/Home.module.css';
 
 const WhitelistChecker = () => {
   const [whitelistStatus, setWhitelistStatus] = useState(null);
@@ -59,20 +60,30 @@ const WhitelistChecker = () => {
   }, [whitelistStatus, eligibleMints]);
 
   return (
-    <div>
+    <div className={styles['whitelist-container']}>
       <div>
         {connectedAddress && whitelistStatus !== null && (
           <div>
             {whitelistStatus ? (
-              <div>
-                <p>Welcome to the Jungle, Bully.</p>
-                <p> You are eligible for <b>{eligibleMints}</b> mints</p>
+              <><><><div className={styles['welcome-message']}>
+                <p>Welcome to the Jungle, <b>Bully.</b></p>
               </div>
+                <div className={styles['welcome-message']}>
+                  <p>You are eligible for</p>
+                </div></><div className={styles['mints-count']}>
+                  <p>50</p>
+                </div></>
+                <div className={styles['welcome-message']}>
+                  <b><p>FREE Evolution 1 NFTs</p></b>
+                </div></>
+                
             ) : (
-              <div>
-                <p>This isn&apos;t your time.</p>
+              <div className={styles['error-message']}>
+                <p>This isn't your time.</p>
                 <p>Find out how to join us in Discord...</p>
-                <button onClick={handleJoinDiscord}>Join Discord to whitelist</button>
+                <button className={styles['discord-button']} onClick={handleJoinDiscord}>
+                  Join Discord to whitelist
+                </button>
               </div>
             )}
           </div>

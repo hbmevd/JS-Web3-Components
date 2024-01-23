@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ThirdwebProvider, ConnectWallet, useAddress, useDisconnect } from '@thirdweb-dev/react';
 import WhitelistChecker from './whitelistChecker';
+import styles from '../styles/home.module.css';
 
 const WhitelistConnector = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -25,7 +26,9 @@ const WhitelistConnector = () => {
   return (
     <ThirdwebProvider
       // Add your ThirdwebProvider props as needed
-    ><ConnectWallet/>
+    ><div className={styles['whitelist-container']}>
+        <ConnectWallet/>
+        </div>
       <div>
         {/* Display the ConnectWallet component only if not connected */}
         {!isConnected && (
