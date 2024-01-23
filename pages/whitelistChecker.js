@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAddress } from '@thirdweb-dev/react';
 import { collection, getDocs, where, query } from '@firebase/firestore';
-import { firestore } from './firebaseConfig'; // Ensure this import is correct
+import { Firestore } from 'firebase/firestore';
 
 const WhitelistChecker = () => {
   const [whitelistStatus, setWhitelistStatus] = useState(null);
