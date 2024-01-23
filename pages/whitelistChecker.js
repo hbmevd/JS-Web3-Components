@@ -79,7 +79,7 @@ const WhitelistChecker = () => {
                 
             ) : (
               <div className={styles['error-message']}>
-                <p>This isn't your time.</p>
+                <p>This isn&apos;t your time.</p>
                 <p>Find out how to join us in Discord...</p>
                 <button className={styles['discord-button']} onClick={handleJoinDiscord}>
                   Join Discord to whitelist
