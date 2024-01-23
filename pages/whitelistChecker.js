@@ -13,7 +13,7 @@ const WhitelistChecker = () => {
 
   const fetchData = async () => {
     try {
-      const whitelistCollection = collection(firestore, 'whitelist'); // Replace with your Firestore collection name
+      const whitelistCollection = collection(firestore, 'whitelist');
 
       const q = query(whitelistCollection, where('address', '==', connectedAddress));
       const snapshot = await getDocs(q);
@@ -39,11 +39,21 @@ const WhitelistChecker = () => {
 
   const handleCheckWhitelist = () => {
     fetchData();
+
+    if (whitelistStatus && eligibleMints > 0) {
+      const successMessage = `Congratulations! You are whitelisted. Available mints: ${eligibleMints}`;
+      console.log(successMessage); // Log success message to console
+      window.parent.postMessage(successMessage, '*');
+    } else {
+      const errorMessage = 'Sorry, you are not whitelisted.';
+      console.log(errorMessage); // Log error message to console
+      window.parent.postMessage(errorMessage, '*');
+    }
   };
 
   const handleGetPreviewData = async () => {
     try {
-      const whitelistCollection = collection(firestore, 'whitelist'); // Replace with your Firestore collection name
+      const whitelistCollection = collection(firestore, 'whitelist');
 
       const snapshot = await getDocs(whitelistCollection);
       const data = snapshot.docs.map(doc => doc.data());
