@@ -1,7 +1,9 @@
-// pages/_app.js or pages/_app.tsx
+// MyApp.js
 
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import '../styles/globals.css';
+import React from 'react';
+import WhitelistConnector from './whitelistConnector';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -9,7 +11,10 @@ function MyApp({ Component, pageProps }) {
       activeChain="ethereum"
       clientId="9b406d6af880a571a409bc229085bdc5"
     >
-      <Component {...pageProps} />
+      {/* Wrap your app content with WhitelistConnector */}
+      <WhitelistConnector>
+        <Component {...pageProps} />
+      </WhitelistConnector>
     </ThirdwebProvider>
   );
 }
