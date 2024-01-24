@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import WhitelistChecker from '../components/whitelistChecker';
 import styles from '../styles/Home.module.css';
+import { ThirdwebProvider } from '@thirdweb-dev/react';
+import { ConnectWallet } from '@thirdweb-dev/react';
+import { useAddress } from '@thirdweb-dev/react';
 
 const WhitelistConnector = () => {
   const [isConnected, setIsConnected] = useState(false);
   const connectedAddress = useAddress();
-  const disconnect = useDisconnect(); // Destructure disconnect directly
 
   const handleConnectWallet = () => {
     // Update the state to indicate a successful connection
