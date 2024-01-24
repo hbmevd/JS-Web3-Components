@@ -1,8 +1,8 @@
 // WhitelistConnector.js
 
 import React, { useState, useEffect } from 'react';
-import WhitelistChecker from '../components/whitelistChecker';
-import styles from '../styles/Home.module.css';
+import WhitelistChecker from './whitelistChecker';
+import styles from './styles/Home.module.css';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import { ConnectWallet } from '@thirdweb-dev/react';
 import { useAddress } from '@thirdweb-dev/react';
