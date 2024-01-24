@@ -3,7 +3,7 @@
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import '../styles/globals.css';
 import React from 'react';
-import WhitelistConnector from '../components/whitelistConnector';
+import WhitelistConnector from '../whitelistConnector';
 
 function MyApp({ Component, pageProps }) {
   return (

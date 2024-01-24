@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAddress, useDisconnect } from '@thirdweb-dev/react';
 import { collection, getDocs, where, query } from '@firebase/firestore';
-import { firestore } from '../firebaseConfig'; // Ensure this import is correct
+import { firestore } from './firebaseConfig'; // Ensure this import is correct
 import styles from '../styles/Home.module.css';
 
 const WhitelistChecker = () => {
